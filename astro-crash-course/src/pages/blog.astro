@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Showcase from "../components/Showcase.astro";
+import Card from "../components/Card.astro";
+
+const posts = await Astro.glob("../posts/*.md");
+
+// const response = await fetch(
+//     "http://jsonplaceholder.typicode.com/posts?_limit=5"
+// );
+// const posts = await response.json();
+---
+
+<Layout title="Blog Page">
+  <Showcase heading="Astro Blog" text="A Simple Blog Built with Astro" />
+  <section class="page-content">
+    <div class="container">
+      {
+        posts.map((p) => (
+          <Card>
+            <h3>{p.frontmatter.title}</h3>
+            <div>
+              Written by {p.frontmatter.author} on{" "}
+              {new Date(p.frontmatter.date).toLocaleDateString()}
+            </div>
+            <p>{p.frontmatter.excerpt}</p>
+            <a class="btn" href={`/${p.frontmatter.slug}`}>
+              Read More
+            </a>
+          </Card>
+        ))
+        // posts.map((p) => (
+        //     <Card>
+        //         <h3>{p.title}</h3>
+        //         <p>{p.body}</p>
+        //     </Card>
+        // ))
+      }
+    </div>
+  </section>
+</Layout>

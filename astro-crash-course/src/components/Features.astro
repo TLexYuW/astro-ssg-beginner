@@ -21,8 +21,14 @@ const featuresData = [
   <div class="container">
     {
       featuresData.map(
-        (feature) => (
-          <Card dark={true} title={feature.title} body={feature.body} />
+        (
+          feature
+          // <Card dark={true} title={feature.title} body={feature.body} />
+        ) => (
+          <Card>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </Card>
         )
         /*
         <div class="card">
