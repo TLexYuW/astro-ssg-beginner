@@ -1,38 +1,8 @@
 ---
-const str = "L";
-const num = 1;
-const obj = {
-  name: str,
-  number: num,
-  favorties: ["astro", "css", "js"],
-};
-const isVisible = true;
-const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
-const data = await res.json();
+// Component imports
+import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>{str}</h1>
-    <h1>{obj.favorties[isVisible ? 2 : 0].toUpperCase()}</h1>
-    {isVisible && <h1>{obj.favorties[1].toUpperCase()}</h1>}
-
-    <!-- Loop -->
-    {obj.favorties.map((item) => <li>{item}</li>)}
-    {
-      data.map((p) => (
-        <>
-          <h3>{p.title}</h3>
-          <p>{p.body}</p>
-        </>
-      ))
-    }
-  </body>
-</html>
+<MainLayout title="My Blog">
+  <h1>Hi from Home</h1>
+</MainLayout>

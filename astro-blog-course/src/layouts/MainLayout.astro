@@ -1,28 +1,18 @@
 ---
-interface Props{
-    title?: string;
-    description?: string;
-}
+import MainHead from "./MainHead.astro";
 
-const {title = "Default Title", description = "Default Description"} = Astro.props as Props;
+// interface Props {
+//   title?: string;
+//   description?: string;
+// }
+
+const { title = "My Astro Blog", description = "Default Description" } =
+  Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
-      rel="stylesheet"
-    />
-    <title>{title}</title>
-  </head>
+  <MainHead {title} {description} />
   <body>
-   <slot />
+    <slot />
   </body>
 </html>
