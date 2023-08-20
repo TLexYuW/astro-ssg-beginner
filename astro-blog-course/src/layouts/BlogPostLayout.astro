@@ -1,0 +1,49 @@
+---
+// library import
+// import { Image } from "@astrojs/image/components";
+
+// component import
+import MainLayout from "./MainLayout.astro";
+import PostHeader from "../components/PostHeader.astro";
+
+// utils import
+// import { slugify, formatDate } from "../js/utils";
+
+const { frontmatter } = Astro.props;
+// console.log(frontmatter);
+
+const { title, description, date, category, author, image } = frontmatter;
+---
+
+<MainLayout title={title} {description}>
+  <!-- <header>
+    <div class="container">
+      <a href={`/categroy/${slugify(category)}`} class="badge">{category}</a>
+      <h1 class="h2">{title}</h1>
+      <p>
+        by <a href={`/author/${slugify(author)}`}>{author}</a>。{
+          formatDate(date)
+        }
+      </p>
+    </div>
+    <Image
+      src={image.src}
+      alt={image.alt}
+      width="1200"
+      height="600"
+      format="avif"
+      fit="cover"
+      quality={80}
+      aspectRatio="5:2"
+      class="hero-image"
+    />
+  </header> -->
+  <PostHeader {title} {description} {date} {image} {category} {author} />
+  <!--  -->
+  <div class="post-content">
+    <div class="content">
+      <slot />
+    </div>
+    <div class="sidebar"></div>
+  </div>
+</MainLayout>

@@ -1,17 +1,21 @@
----
-// const str = "L";
-// const num = 1;
-// const obj = {
-//   name: str,
-//   number: num,
-//   favorties: ["astro", "css", "js"],
-// };
-// const isVisible = true;
-// const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
-// const data = await res.json();
+<!-- ---
+const str = "L";
+const num = 1;
+const obj = {
+  name: str,
+  number: num,
+  favorties: ["astro", "css", "js"],
+};
+const isVisible = true;
+const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5");
+const data = await res.json();
+
+const foregroundColor = "hsl(20,50%,50%)";
+const backgroundColor = "hsl(200,50%,50%)";
+const isRed = true;
 ---
 
-<!-- <html lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -22,7 +26,10 @@
   <body>
     <h1>{str}</h1>
     <h1>{obj.favorties[isVisible ? 2 : 0].toUpperCase()}</h1>
-    {isVisible && <h1>{obj.favorties[1].toUpperCase()}</h1>} --><!-- Loop --><!-- {obj.favorties.map((item) => <li>{item}</li>)}
+    {isVisible && <h1>{obj.favorties[1].toUpperCase()}</h1>}
+    <p class:list={["big", { red: isRed }]}>Paragraph <span>Big</span></p> Loop {
+      obj.favorties.map((item) => <li>{item}</li>)
+    }
     {
       data.map((p) => (
         <>
@@ -32,4 +39,21 @@
       ))
     }
   </body>
-</html> -->
+</html>
+
+<style define:vars={{ foregroundColor, backgroundColor }}>
+  p {
+    background-color: var(--backgroundColor);
+    color: var(--foregroundColor);
+    font-size: 2rem;
+    span {
+      color: blue;
+    }
+  }
+  .big {
+    font-size: 4rem;
+  }
+  .red {
+    color: red;
+  }
+</style> -->
